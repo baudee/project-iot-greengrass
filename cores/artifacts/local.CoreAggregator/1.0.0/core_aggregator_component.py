@@ -7,11 +7,11 @@ import datetime
 from awsiot.greengrasscoreipc.clientv2 import GreengrassCoreIPCClientV2
 
 DEVICES_TOPIC = 'devices/+/data'
-ACCELERATOR_NAME = 'Ursy-Accelerator1'
-DETECTOR_NAME = 'Ursy-Distance1'
+ACCELERATOR_NAME = 'your_accelerator_name'
+DETECTOR_NAME = 'your_detector_name'
 DEVICES_NAME = [ACCELERATOR_NAME, DETECTOR_NAME]
 
-CORE_NAME = 'GreengrassCore-Ursy'
+CORE_NAME = 'your_core_name'
 PUBLISH_DATA_TOPIC = 'cores/' + CORE_NAME + '/devices/+/data'
 PUBLISH_HEALTH_TOPIC = 'cores/' + CORE_NAME + '/devices/+/health'
 
