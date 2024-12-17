@@ -1,0 +1,47 @@
+{
+  "RecipeFormatVersion": "2020-01-25",
+  "ComponentName": "local.CoreAggregator",
+  "ComponentVersion": "1.0.0",
+  "ComponentDescription": "A component that subscribes to Hello World messages from client devices.",
+  "ComponentPublisher": "Amazon",
+  "ComponentConfiguration": {
+    "DefaultConfiguration": {
+      "accessControl": {
+        "aws.greengrass.ipc.mqttproxy": {
+          "local.CoreAggregator:mqttproxy:1": {
+            "policyDescription": "Allows access to publish/subscribe to all topics.",
+            "operations": [
+              "aws.greengrass#PublishToIoTCore",
+              "aws.greengrass#SubscribeToIoTCore"
+            ],
+            "resources": [
+              "*"
+            ]
+          }
+        },
+        "aws.greengrass.ipc.pubsub": {
+          "local.CoreAggregator:pubsub:1": {
+            "policyDescription": "Allows access to subscribe to all topics.",
+            "operations": [
+              "aws.greengrass#SubscribeToTopic"
+            ],
+            "resources": [
+              "*"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Manifests": [
+    {
+      "Platform": {
+        "os": "linux"
+      },
+      "Lifecycle": {
+        "install": "python3 -m venv venv && . venv/bin/activate && pip install awsiotsdk",
+        "run": ". venv/bin/activate && python3 {artifacts:path}/core_aggregator_component.py"
+      }
+    }
+  ]
+}
